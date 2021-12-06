@@ -7,6 +7,7 @@ import time
 import psutil
 import os
 import math
+from PIL import Image, ImageTk
 
 path = "C:\KimuSoft\KuBukkit"
 
@@ -153,8 +154,13 @@ bukkit_value = IntVar()
 # 자동 버킷 변수 선언
 for i in range(1, 29):
     globals()['bukkit_{}'.format(i)] = Radiobutton(scrollable_frame)
-    globals()['bukkit_{}'.format(i)].config(font=("NotoSansKR-Medium", 14))
-    globals()['bukkit_{}'.format(i)].config(text='bukkit_{}'.format(i), variable=bukkit_value, value=i, indicatoron = 0)
+    globals()['bukkit_{}'.format(i)].config(font=("NotoSansKR-Medium", 14), width=15, height=2)
+    globals()['bukkit_{}'.format(i)].config(text='bukkit_{}'.format(i), variable=bukkit_value, value=i, indicatoron=0)
+
+    globals()['bukkit_image_{}'.format(i)] = PhotoImage(file="testimage.png")
+    globals()['bukkit_image_label_{}'.format(i)] = Label(globals()['bukkit_{}'.format(i)], image=globals()['bukkit_image_{}'.format(i)])
+    globals()['bukkit_image_label_{}'.format(i)].pack()
+
     bukkits = i
 
 f = 0
